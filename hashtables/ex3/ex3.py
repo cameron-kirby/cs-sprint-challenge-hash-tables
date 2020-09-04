@@ -1,9 +1,29 @@
+# keep track of unique integers with a tally / total of times we've seen them
+# iterate through each inner array and add to our num_cache
+# if we already have the number in our cache, increment its tally
 def intersection(arrays):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    # number of inner arrays
+    num_of_arrays = len(arrays)
 
+    num_cache = {}
+
+    # iterate through our array
+    for inner_array in arrays:
+        for num in inner_array:
+            if num not in num_cache:
+                num_cache[num] = 1
+            else:
+                num_cache[num] += 1
+
+    result = []
+
+    # iterate through our num_cache and append any integers that have
+    # an equal amount of instances to our number of inner arrays
+    # to our final output
+    for pair in num_cache.items():
+        if pair[1] == num_of_arrays:
+            result.append(pair[0])
+    
     return result
 
 
